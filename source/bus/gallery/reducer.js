@@ -2,7 +2,7 @@ import photo1 from "../../theme/assets/photos/1.jpeg";
 import photo2 from "../../theme/assets/photos/2.jpeg";
 import photo3 from "../../theme/assets/photos/3.jpeg";
 import photo4 from "../../theme/assets/photos/4.jpeg";
-import {SHOW_NEXT_PHOTO} from "./types";
+import {SHOW_NEXT_PHOTO, SHOW_SELECTED_PHOTO} from "./types";
 
 const initialState = {
     photos: [
@@ -23,6 +23,11 @@ export const galleryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 selectedPhotoIndex: state.selectedPhotoIndex + 1,
+            }
+        case SHOW_SELECTED_PHOTO:
+            return {
+                ...state,
+                selectedPhotoIndex: Number(action.payload)
             }
         default:
             return state;
