@@ -1,6 +1,7 @@
 import {applyMiddleware, compose, createStore} from "redux";
 import {rootReducer} from "./rootReducer";
 import {createLogger} from "redux-logger/src";
+import {List} from "immutable";
 
 const logger = createLogger({
     duration: true,
@@ -14,6 +15,8 @@ const logger = createLogger({
     }
 })
 
+const list = List([1, 2, 3])
+console.log(list);
 
 const devtools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 const composeEnhancers = devtools || compose;

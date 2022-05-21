@@ -28,3 +28,12 @@ store.subscribe(() => {
 
 Для асинхронных операций и сайд эффектов есть миддлвары
 
+
+## 12. Практика. Как работает Immutable js
+Нужно настроить отображение в консоли браузера
+https://chrome.google.com/webstore/detail/immutablejs-object-format/hgldghadipiblonfkkicmgcbbijnpeog
+
+Любая операция на сущнстью возвращает новую сущность, а старая не меняется
+
+
+<img src="./readme_images/40_how_immutable_1.png">

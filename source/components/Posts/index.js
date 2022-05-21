@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { List } from 'immutable';
 import FlipMove from 'react-flip-move';
+import {connect} from "react-redux";
 
 // Instruments
 import Styles from './styles.m.css';
@@ -9,7 +10,25 @@ import { mockedProfile } from '../../instruments/mockedData';
 
 // Components
 import { Composer, Catcher, Post } from '../../components';
+import {fetchPostsAsync} from "../../bus/posts/actions";
+import {bindActionCreators} from "redux";
 
+const mapStateToProps = state => {
+    return {
+        posts: state.posts
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        actions: bindActionCreators({fetchPostsAsync}, dispatch)
+    }
+}
+
+@connect(
+    mapStateToProps,
+    mapDispatchToProps
+)
 export default class Posts extends Component {
     static defaultProps = {
         // State
