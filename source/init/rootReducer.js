@@ -1,6 +1,6 @@
 import {combineReducers} from "redux";
-import {galleryReducer} from "../bus/gallery/reducer";
+import {postsReducer as posts} from "../bus/posts/reducer";
 
 export const rootReducer = combineReducers({
-    gallery: galleryReducer,
+    posts,
 })
