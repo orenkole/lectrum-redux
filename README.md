@@ -46,3 +46,18 @@ __DEV__  предоставляется webpack
 ---
 
 Благодаря thunk мы можем из экшен криэторов возвращать функции, а не объекты
+
+
+## 47. Redux-saga principles
+
+<img src="./readme_images/47_redux-saga_principles_1.png">
+
+<img src="./readme_images/47_redux-saga_principles_2.png">
+
+## 40. Saga development
+
+<img src="./readme_images/47_redux-saga_principles_2.png">
+
+## 51. Practice. Root saga
+
+
