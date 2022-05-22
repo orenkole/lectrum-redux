@@ -37,3 +37,12 @@ https://chrome.google.com/webstore/detail/immutablejs-object-format/hgldghadipib
 
 
 <img src="./readme_images/40_how_immutable_1.png">
+
+
+## 14. Практика. Знакомство с middleware
+
+__DEV__  предоставляется webpack
+
+---
+
+Благодаря thunk мы можем из экшен криэторов возвращать функции, а не объекты
