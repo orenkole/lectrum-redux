@@ -60,4 +60,37 @@ __DEV__  предоставляется webpack
 
 ## 51. Practice. Root saga
 
+_store.js_
+```javascript
+import {enhancedStore, sagaMiddleware} from "./middleware/core";
+import {rootSaga} from "./middleware/rootSaga";
 
+export const store = createStore(rootReducer, enhancedStore);
+
+sagaMiddleware.run(rootSaga);
+```
+
+_rootSaga.js_
+```javascript
+export function* rootSaga () {
+    yield console.log('init saga')
+}
+```
+
+_core.js_
+```javascript
+const sagaMiddleware = createSagaMiddleware()
+
+const middleware = [
+    sagaMiddleware,
+    ...
+];
+
+const enhancedStore = composeEnhancers(applyMiddleware(...middleware));
+
+export {enhancedStore, sagaMiddleware};
+```
+
+## 52. Posts sagas
+
+<img src="./readme_images/52_posts_saga_1.png">

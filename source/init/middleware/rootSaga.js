@@ -1,3 +1,5 @@
+import {watchCreatePost} from "../../bus/posts/saga/watchers";
+
 export function* rootSaga () {
-    yield console.log('init saga')
+    yield watchCreatePost()
 }
