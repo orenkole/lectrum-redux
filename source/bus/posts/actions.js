@@ -1,4 +1,4 @@
-import {FETCH_POSTS_ASYNC, FILL_POSTS} from "./types";
+import {CREATE_POST, FETCH_POSTS_ASYNC, FILL_POSTS} from "./types";
 import {api} from "../../REST";
 
 export const fillPosts = (posts) => {
@@ -18,3 +18,9 @@ export const fetchPostsAsync = () => async (dispatch) => {
 
     dispatch(fillPosts(result.data))
 }
+
+// Note: action is sync
+export const createPost = (comment) => ({
+    type: CREATE_POST,
+    payload: comment
+})
