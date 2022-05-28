@@ -9,6 +9,10 @@ export const postsActions = {
         }
     },
 
+    clearPosts: () => ({
+        type: types.CLEAR_POSTS
+    }),
+
     fetchPostsAsync: async (dispatch) => {
         dispatch({
             type: types.FETCH_POSTS_ASYNC

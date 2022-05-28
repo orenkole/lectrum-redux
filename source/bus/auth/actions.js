@@ -18,5 +18,11 @@ export const authAction = {
     },
     initializeAsync: () => ({
         type: types.INITIALIZE_ASYNC
+    }),
+    logout: () => ({
+        type: types.LOGOUT
+    }),
+    logoutAsync: () => ({
+        type: types.LOGOUT_ASYNC
     })
 }

@@ -1,6 +1,7 @@
 export const types = {
     // Sync
     FILL_POSTS: "FILL_POSTS",
+    CLEAR_POSTS: "CLEAR_POSTS",
 
     // Async
     FETCH_POSTS_ASYNC: "FETCH_POSTS_ASYNC",

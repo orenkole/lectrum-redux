@@ -8,6 +8,8 @@ import {connect} from "react-redux";
 import Styles from './styles.m.css';
 import { book } from '../../navigation/book';
 import { mockedProfile } from '../../instruments/mockedData';
+import mapDispatchToProps from "react-redux/lib/connect/mapDispatchToProps";
+import {authAction} from "../../bus/auth/actions";
 
 const mapStateToProps = (state) => {
     return {
@@ -16,17 +18,12 @@ const mapStateToProps = (state) => {
     }
 }
 
-@connect(mapStateToProps)
-export default class Nav extends Component {
-    static defaultProps = {
-        // State
-        profile:         mockedProfile,
-        isAuthenticated: true,
-        isOnline:        false,
+const mapDispatchToProps = {
+    logoutAsync: authAction.logoutAsync
+}
 
-        // Actions
-        logoutAsync: () => {},
-    };
+@connect(mapStateToProps, mapDispatchToProps)
+export default class Nav extends Component {
 
     _getNav = () => {
         const { isAuthenticated, profile } = this.props;

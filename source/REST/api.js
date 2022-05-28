@@ -31,6 +31,12 @@ export const api = {
                     body: JSON.stringify({token: this.token})
                 }
             })
+        },
+        logout (credentials) {
+            return fetch(`${MAIN_URL}/user/logout`, {
+                method: 'GET',
+                body: JSON.stringify(credentials)
+            })
         }
     },
     posts: {
