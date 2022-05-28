@@ -1,12 +1,12 @@
 // Core
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
-import {Redirect, Route, Switch, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 // Pages
-import {Feed, Login, NewPassword, Profile, Signup} from '../pages';
-import {book} from "./book";
 import {connect} from "react-redux";
+import Private from "./Private";
+import Public from "./Public";
 
 const mapStateToProps = (state) => {
     return {
@@ -21,19 +21,6 @@ export default class App extends Component {
     render () {
         const isAuthenticated = this.props;
 
-        return isAuthenticated ? (
-            <Switch>
-                <Route path={book.feed} component={Feed} />
-                <Route path={book.profile} component={Profile} />
-                <Route path={book.newPassword} component={NewPassword} />
-                <Redirect to={book.feed} />
-            </Switch>
-        ) : (
-            <Switch>
-                <Route path={book.login} component={Login} />
-                <Route path={book.signUp} component={Signup} />
-                <Redirect to={book.login} />
-            </Switch>
-        )
+        return isAuthenticated ? <Private /> : <Public />
     }
 }
