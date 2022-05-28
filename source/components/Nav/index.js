@@ -11,7 +11,8 @@ import { mockedProfile } from '../../instruments/mockedData';
 
 const mapStateToProps = (state) => {
     return {
-        isAuthenticated: state.auth.get('isAuthenticated')
+        isAuthenticated: state.auth.get('isAuthenticated'),
+        profile: state.profile,
     }
 }
 
