@@ -38,7 +38,7 @@ export const api = {
             return fetch(`${MAIN_URL}`, {
                 method: 'GET',
                 headers: {
-                    'x-no-auth': groupId
+                    Authorization: this.token,
                 }
             })
         }
