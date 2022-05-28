@@ -7,5 +7,10 @@ export const authAction = {
     signupAsync: (userData) => ({
         type: types.SIGNUP_ASYNC,
         payload: userData
-    })
+    }),
+    authenticateAsync: () => {
+        return {
+            type: types.AUTHENTICATE_ASYNC
+        }
+    }
 }

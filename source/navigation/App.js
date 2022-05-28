@@ -7,6 +7,7 @@ import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import Private from "./Private";
 import Public from "./Public";
+import {authAction} from "../bus/auth/actions";
 
 const mapStateToProps = (state) => {
     return {
@@ -14,10 +15,18 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = {
+    authenticateAsync: authAction.authenticateAsync,
+}
+
 @hot(module)
 @withRouter
-@connect(mapStateToProps)
+@connect(mapStateToProps, mapDispatchToProps)
 export default class App extends Component {
+    componentDidMount() {
+        this.props.authenticateAsync()
+    }
+
     render () {
         const isAuthenticated = this.props;
 
