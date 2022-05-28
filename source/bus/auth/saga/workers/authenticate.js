@@ -16,9 +16,10 @@ export function* authenticate({payload: credentials}) {
         yield apply(localStorage, localStorage.setItem, ['token', profile.token])
         yield put(profileActions.fillProfile(profile))
         yield put(authAction.authenticate())
-    } catch(error) {
+    } catch (error) {
         yield put(uiAction.emitError(error, 'authenticate worker'))
     } finally {
         yield put(uiAction.startFetching())
+        yield put(authAction.initialize())
     }
 }

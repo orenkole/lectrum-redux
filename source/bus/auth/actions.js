@@ -4,6 +4,9 @@ export const authAction = {
     authenticate: () => ({
         type: types.AUTHENTICATE
     }),
+    initialize: () => ({
+        type: types.INITIALIZE
+    }),
     signupAsync: (userData) => ({
         type: types.SIGNUP_ASYNC,
         payload: userData
@@ -12,5 +15,8 @@ export const authAction = {
         return {
             type: types.AUTHENTICATE_ASYNC
         }
-    }
+    },
+    initializeAsync: () => ({
+        type: types.INITIALIZE_ASYNC
+    })
 }

@@ -8,10 +8,12 @@ import {connect} from "react-redux";
 import Private from "./Private";
 import Public from "./Public";
 import {authAction} from "../bus/auth/actions";
+import {Loading} from "../components";
 
 const mapStateToProps = (state) => {
     return {
-        isAuthenticated: state.auth.get('isAuthenticated')
+        isAuthenticated: state.auth.get('isAuthenticated'),
+        isInitialized: state.auth.get('isInitialized'),
     }
 }
 
@@ -28,7 +30,14 @@ export default class App extends Component {
     }
 
     render () {
-        const isAuthenticated = this.props;
+        const {
+            isAuthenticated,
+            isInitialized,
+        } = this.props;
+
+        if (!isInitialized) {
+            return <Loading />
+        }
 
         return isAuthenticated ? <Private /> : <Public />
     }
