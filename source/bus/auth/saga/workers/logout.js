@@ -4,6 +4,8 @@ import {profileActions} from "../../../profile/actions";
 import {authAction} from "../../actions";
 import {api} from "../../../../REST";
 import {postsActions} from "../../../posts/actions";
+import {replace} from "react-router-redux";
+import {book} from "../../../../navigation/book";
 
 export function* logout() {
     try {
@@ -23,5 +25,6 @@ export function* logout() {
         yield put(postsActions.clearPosts())
         yield put(uiAction.stopFetching())
         yield put(authAction.logout())
+        yield put(replace(book.login))
     }
 }

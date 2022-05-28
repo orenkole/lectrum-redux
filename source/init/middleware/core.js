@@ -1,4 +1,6 @@
 import {applyMiddleware, compose} from "redux";
+import {createBrowserHistory} from "history";
+import {routerMiddleware as createRouterMiddleware} from "react-router-redux";
 import {createLogger} from "redux-logger/src";
 import thunk from "redux-thunk";
 import createSagaMiddleware from "redux-saga";
@@ -16,12 +18,16 @@ const logger = createLogger({
     }
 })
 
+const history = createRouterMiddleware()
+const routerMiddleware = createRouterMiddleware(history);
+
 const devtools = __DEV__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 const sagaMiddleware = createSagaMiddleware()
 
 const middleware = [
     sagaMiddleware,
     customThunk,
+    routerMiddleware,
 ];
 
 if (__DEV__) {
@@ -31,4 +37,4 @@ if (__DEV__) {
 const composeEnhancers = devtools || compose;
 const enhancedStore = composeEnhancers(applyMiddleware(...middleware));
 
-export {enhancedStore, sagaMiddleware};
+export {enhancedStore, sagaMiddleware, history};
