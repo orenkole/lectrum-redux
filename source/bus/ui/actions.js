@@ -13,5 +13,11 @@ export const uiAction = {
             payload: error,
             meta,
         }
-    }
+    },
+    setOnlineState: () => ({
+        type: types.SET_ONLINE_STATE
+    }),
+    setOfflineState: () => ({
+        type: types.SET_OFFLINE_STATE
+    })
 }
