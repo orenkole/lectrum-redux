@@ -9,6 +9,7 @@ import Private from "./Private";
 import Public from "./Public";
 import {authAction} from "../bus/auth/actions";
 import {Loading} from "../components";
+import {joinSocketChannel} from "../init/socket";
 
 const mapStateToProps = (state) => {
     return {
@@ -26,7 +27,8 @@ const mapDispatchToProps = {
 @connect(mapStateToProps, mapDispatchToProps)
 export default class App extends Component {
     componentDidMount() {
-        this.props.authenticateAsync()
+        this.props.authenticateAsync();
+        joinSocketChannel();
     }
 
     render () {
