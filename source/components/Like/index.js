@@ -11,6 +11,7 @@ export default class Like extends Component {
 
     _likePost = () => {
         const {
+            // likePostAsync calling
             actions: { likePostAsync, unlikePostAsync },
             id,
         } = this.props;

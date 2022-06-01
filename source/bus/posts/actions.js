@@ -27,5 +27,15 @@ export const postsActions = {
     createPost: (comment) => ({
         type: types.CREATE_POST,
         payload: comment
+    }),
+
+    likePost: (likedPostData) => ({
+        type: types.LIKE_POST,
+        payload: likedPostData,
+    }),
+
+    likePostAsync: (postId) => ({
+        type: types.LIKE_POST_ASYNC,
+        payload: postId,
     })
 }
