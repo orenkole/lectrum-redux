@@ -1,5 +1,6 @@
 import {socket} from "../../init/socket";
 import {uiAction} from "../ui/actions";
+import {postsActions} from "../posts/actions";
 
 export const socketActions = {
     listenConnection: () => dispatch => {
@@ -8,6 +9,12 @@ export const socketActions = {
         });
         socket.on('disconnect', () => {
             dispatch(uiAction.setOfflineState());
+        })
+    },
+    listenPosts: () => dispatch => {
+        socket.on('create', (event) => {
+            const {data: post} = JSON.parse(event);
+            dispatch(postsActions.createPost(post))
         })
     }
 }

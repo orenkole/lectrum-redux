@@ -29,7 +29,7 @@ const mapDispatchToProps = {
 @connect(mapStateToProps, mapDispatchToProps)
 export default class App extends Component {
     componentDidMount() {
-        const {listenConnection} = this.props;
+        const {listenConnection, listenPosts} = this.props.socket;
         this.props.authenticateAsync();
         listenConnection();
         joinSocketChannel();
@@ -44,12 +44,13 @@ export default class App extends Component {
         const {
             isAuthenticated,
             isInitialized,
+            listenPosts,
         } = this.props;
 
         if (!isInitialized) {
             return <Loading />
         }
 
-        return isAuthenticated ? <Private /> : <Public />
+        return isAuthenticated ? <Private listenPosts={listenPosts}/> : <Public />
     }
 }
