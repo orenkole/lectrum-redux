@@ -6,6 +6,7 @@ import {api} from "../../../../REST";
 import {postsActions} from "../../../posts/actions";
 import {replace} from "react-router-redux";
 import {book} from "../../../../navigation/book";
+import {userActions} from "../../../users/actions";
 
 export function* logout() {
     try {
@@ -23,6 +24,7 @@ export function* logout() {
         yield apply(localStorage, localStorage.removeItem, ['remember'])
         yield put(profileActions.clearProfile())
         yield put(postsActions.clearPosts())
+        yield put(userActions.clearUsers())
         yield put(uiAction.stopFetching())
         yield put(authAction.logout())
         yield put(replace(book.login))

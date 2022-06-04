@@ -12,6 +12,7 @@ import { mockedProfile } from '../../instruments/mockedData';
 import { Composer, Catcher, Post } from '../../components';
 import {postsActions} from "../../bus/posts/actions";
 import {bindActionCreators} from "redux";
+import {userActions} from "../../bus/users/actions";
 
 const mapStateToProps = state => {
     return {
@@ -23,7 +24,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         actions: bindActionCreators({
-            fetchPostsAsync: postsActions.fetchPostsAsync
+            fetchPostsAsync: postsActions.fetchPostsAsync,
+            ...userActions,
         }, dispatch)
     }
 }
@@ -37,6 +39,7 @@ export default class Posts extends Component {
         const { actions } = this.props;
 
         actions.fetchPostsAsync();
+        actions.fetchUsersAsync();
     }
 
     render () {
