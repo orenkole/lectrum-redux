@@ -11,10 +11,27 @@ export const socketActions = {
             dispatch(uiAction.setOfflineState());
         })
     },
-    listenPosts: () => dispatch => {
+    listenPosts: () => (dispatch, getState) => {
         socket.on('create', (event) => {
             const {data: post} = JSON.parse(event);
             dispatch(postsActions.createPost(post))
+        });
+
+        socket.on('like', (event) => {
+            const {data, meta} = JSON.parse(event);
+            if (meta.action === 'like'); {
+                const liker = getState()
+                    .users.find(user => user.get('id') === data?.userId);
+
+                dispatch(
+                    postsActions.likePost({
+                        postId: data.postId,
+                        liker
+                    })
+                )
+            } else {
+                dispatch(postsActions.unlikePost(data))
+            }
         })
-    }
+    },
 }
